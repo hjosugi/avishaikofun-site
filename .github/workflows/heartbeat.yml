@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Fewer attempts than a deploy uses: nothing is in flight here, so a
       # slow answer means trouble rather than propagation.

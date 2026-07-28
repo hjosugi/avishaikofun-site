@@ -38,6 +38,17 @@ Pushing to `main` publishes `site/` to Cloudflare Pages via
 - `CLOUDFLARE_API_TOKEN` — a token with **Cloudflare Pages — Edit**
 - `CLOUDFLARE_ACCOUNT_ID`
 
+The deploy also needs `www.avishaikofun.com` attached as a custom
+domain on the **`avishaikofun-site`** Pages project. That binding is not
+in this repo and nothing here recreates it: without it the upload still
+succeeds, `avishaikofun-site.pages.dev` still serves the page, and only
+the live check at the end of the deploy — and the heartbeat — notice
+that the domain itself is dead.
+
+Note there is a second, older Pages project, `avishai-kofun`, which
+serves the apex. Only the apex belongs to it; `www` pointing there is a
+misconfiguration, not a fallback.
+
 To deploy by hand instead:
 
 ```sh

@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Check every local asset the page references exists
         run: |
@@ -53,7 +53,26 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      # An unset secret arrives as an empty string, and wrangler only
+      # complains about it after npx has spent 10s installing — buried
+      # under an install log, phrased as if the environment were at
+      # fault. Say plainly which secret is missing, before that.
+      - name: Check the deploy credentials are present
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          missing=0
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID; do
+            if [ -z "${!name:-}" ]; then
+              echo "::error::repository secret ${name} is not set"
+              missing=1
+            fi
+          done
+          exit "$missing"
 
       - name: Deploy to Cloudflare Pages
         # npx, not bunx: this repo has no build and no bun, so the runner's
