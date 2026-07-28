@@ -62,3 +62,24 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # A deploy can report success while the custom domain still serves
+      # something else, or nothing. The apex of avishaikofun.com redirects
+      # here, so a broken deploy here is a dead end for anyone who typed
+      # the bare domain — worth failing the job over.
+      - name: Confirm the site is live
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5 6 7 8 9 10; do
+            status="$(curl -sS -o body.html -w '%{http_code}' --max-time 10 "$SITE_URL" || echo 000)"
+            if [ "$status" = "200" ] && grep -q "Avishai Kofun" body.html; then
+              echo "live: $SITE_URL"
+              exit 0
+            fi
+            echo "attempt ${attempt}: status ${status}, retrying"
+            sleep 20
+          done
+          echo "::error::${SITE_URL} did not serve the site after 10 attempts (last status ${status})"
+          exit 1
+        env:
+          SITE_URL: https://www.avishaikofun.com/
