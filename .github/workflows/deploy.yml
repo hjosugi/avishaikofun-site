@@ -1,0 +1,64 @@
+# Publish the company site to Cloudflare Pages.
+#
+# There is no build: site/ is deployed as-is, so the only thing worth
+# checking before publishing is that the files the page references
+# actually exist. A broken relative path here is invisible until someone
+# loads the page.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check every local asset the page references exists
+        run: |
+          set -euo pipefail
+          missing=0
+          # Local (root-relative) hrefs and srcs only; external links and
+          # mailto: are someone else's problem.
+          refs="$(grep -oE '(href|src)="/[^"]*"' site/index.html \
+            | sed -E 's/.*="(.*)"/\1/' | sort -u)"
+          for ref in $refs; do
+            # "/" is the page itself.
+            if [ "$ref" = "/" ]; then
+              continue
+            fi
+            if [ ! -f "site${ref}" ]; then
+              echo "missing: site${ref}"
+              missing=1
+            fi
+          done
+          exit "$missing"
+
+  deploy:
+    needs: check
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        # npx, not bunx: this repo has no build and no bun, so the runner's
+        # preinstalled Node is one less thing to set up.
+        run: npx --yes wrangler pages deploy site --project-name=avishaikofun-site --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

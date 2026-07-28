@@ -1,0 +1,8 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+  # Unlike the add-in host, nothing here is framed by Outlook, so this
+  # site can refuse framing outright.
+  X-Frame-Options: DENY
