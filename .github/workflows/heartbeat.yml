@@ -1,0 +1,38 @@
+# Availability check for the deployed site.
+#
+# The deploy job already verifies the site right after publishing, but
+# that only covers the moment of a deploy. This catches the site going
+# down long afterwards — a custom domain detached, a Pages project
+# deleted, DNS drifting — none of which touch this repo, so nothing else
+# here would ever notice.
+#
+# The apex of avishaikofun.com redirects here, so when this is down the
+# bare domain is a dead end.
+#
+# GitHub disables scheduled workflows in a repository with no activity
+# for 60 days. If that happens, re-enable it from the Actions tab.
+
+name: Heartbeat
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "URL to check (defaults to the production site)"
+        required: false
+        type: string
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Fewer attempts than a deploy uses: nothing is in flight here, so a
+      # slow answer means trouble rather than propagation.
+      - name: Check the deployed site
+        run: scripts/check-live.sh "${{ inputs.url || 'https://www.avishaikofun.com/' }}" 3
