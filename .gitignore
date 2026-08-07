@@ -1,3 +1,9 @@
 # Wrangler writes an account/project cache here on any `wrangler pages`
 # command, including the by-hand deploy in the README.
 .wrangler/
+.claude/skills/graphify/
+.claude/settings.local.json
+.copilot/skills/graphify/
+.codex/skills/graphify/
+.codex/hooks.json
+graphify-out/
