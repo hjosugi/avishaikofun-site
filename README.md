@@ -14,7 +14,22 @@ site/
   assets/
     company.css
     company/kofun-friends-group.png
+    work/<product>.png
 ```
+
+## Adding a product
+
+The page lists two kinds of work, and they are written differently on
+purpose.
+
+**In the stores** is for things a store has reviewed and published. Each
+card has a 128px icon in `site/assets/work/`, copied from the product's
+own repository, and one filled button that goes to the store listing.
+Check the listing is public before adding it: a listing still in review
+is a dead link for everyone but its owner.
+
+**Open source** is one `<li>` per released project, no icon, linking out
+to that project's own site or repository.
 
 ## What is deliberately not here
 
