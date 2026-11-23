@@ -17,6 +17,7 @@
       <a class="brand" href="/">Avishai Kofun</a>
       <div class="nav-links">
         <a href="#work">Work</a>
+        <a href="https://github.com/hjosugi">GitHub</a>
         <a href="https://avishaikofun.com/support.html">Support</a>
         <a href="mailto:hjosugi@avishaikofun.com">Contact</a>
       </div>
@@ -34,8 +35,8 @@
         <p class="eyebrow">Software development / publishing</p>
         <h1>Avishai Kofun</h1>
         <p class="lead">
-          A small independent studio building practical software, Outlook add-ins,
-          and reusable digital assets.
+          A small independent studio building browser extensions, Outlook add-ins,
+          desktop tools, and reusable digital assets.
         </p>
         <div class="actions">
           <a class="button" href="mailto:hjosugi@avishaikofun.com">Contact</a>
@@ -66,32 +67,218 @@
           <h2>Software and assets</h2>
         </div>
 
+        <h3 class="group-heading">In the stores</h3>
+
+        <div class="featured">
+          <article class="work-card">
+            <div class="work-card-copy">
+              <img
+                class="work-icon"
+                src="/assets/work/sidepanel-bookmarks.png"
+                alt=""
+                width="56"
+                height="56"
+              />
+              <p class="work-type">Chrome extension</p>
+              <h4>Sidepanel Bookmarks</h4>
+              <p>
+                Puts your bookmarks and open tabs in Chrome's side panel and opens
+                pages inside the panel, like the Edge sidebar. Pinned sites, per-site
+                zoom, and a mobile layout that fits the narrow panel.
+              </p>
+            </div>
+            <nav class="project-links" aria-label="Sidepanel Bookmarks links">
+              <a
+                class="store-link"
+                href="https://chromewebstore.google.com/detail/idjfdgpakkmopepemimbpaaippmichdf"
+              >
+                Chrome Web Store
+              </a>
+              <a href="https://github.com/hjosugi/sidepanel/blob/main/docs/PRIVACY.md">Privacy</a>
+              <a href="https://github.com/hjosugi/sidepanel/issues">Support</a>
+              <a href="https://github.com/hjosugi/sidepanel">GitHub</a>
+            </nav>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-copy">
+              <img
+                class="work-icon"
+                src="/assets/work/smart-youtube-comment.png"
+                alt=""
+                width="56"
+                height="56"
+              />
+              <p class="work-type">Chrome extension</p>
+              <h4>Smart YouTube Comment Overlay</h4>
+              <p>
+                A Nico-style overlay for YouTube live chat. Comments are scored in
+                the browser, so useful ones stay on screen and repeated reactions
+                and emoji floods pass quickly.
+              </p>
+            </div>
+            <nav class="project-links" aria-label="Smart YouTube Comment Overlay links">
+              <a
+                class="store-link"
+                href="https://chromewebstore.google.com/detail/nkphcfhnfjceplpgcjccnpfdkheafohp"
+              >
+                Chrome Web Store
+              </a>
+              <a href="https://github.com/hjosugi/smart-youtube-comment/blob/main/docs/PRIVACY.md">
+                Privacy
+              </a>
+              <a href="https://github.com/hjosugi/smart-youtube-comment/issues">Support</a>
+              <a href="https://github.com/hjosugi/smart-youtube-comment">GitHub</a>
+            </nav>
+          </article>
+
+          <!--
+            Every Mail Lookout link below is absolute and points at the apex.
+            Those pages are served by the mail-lookout repo, not this one:
+            the manifest and the Marketplace listing reference them by URL,
+            so they stay where Outlook and Microsoft already expect them.
+          -->
+          <article class="work-card">
+            <div class="work-card-copy">
+              <img
+                class="work-icon"
+                src="/assets/work/mail-lookout.png"
+                alt=""
+                width="56"
+                height="56"
+              />
+              <p class="work-type">Outlook add-in</p>
+              <h4>Mail Lookout</h4>
+              <p>
+                Send-confirmation software for Outlook that helps review recipients,
+                attachments, subject, and body before a message leaves the draft.
+              </p>
+            </div>
+            <nav class="project-links" aria-label="Mail Lookout links">
+              <a
+                class="store-link"
+                href="https://marketplace.microsoft.com/en-us/product/office/WA200011471"
+              >
+                Microsoft Marketplace
+              </a>
+              <a href="https://avishaikofun.com/support.html">Support</a>
+              <a href="https://avishaikofun.com/privacy.html">Privacy</a>
+              <a href="https://avishaikofun.com/terms.html">Terms</a>
+              <a href="https://avishaikofun.com/manifest.xml">Manifest</a>
+              <a href="https://github.com/hjosugi/mail-lookout">GitHub</a>
+            </nav>
+          </article>
+        </div>
+
+        <h3 class="group-heading">Open source</h3>
+
         <!--
-          Every Mail Lookout link below is absolute and points at the apex.
-          Those pages are served by the mail-lookout repo, not this one:
-          the manifest and the Marketplace listing reference them by URL,
-          so they stay where Outlook and Microsoft already expect them.
+          One row per released project. Each links out to that project's
+          own site or repository; nothing here is hosted by this repo.
         -->
-        <article class="work-card">
-          <div class="work-card-copy">
-            <p class="work-type">Outlook add-in</p>
-            <h3>Mail Lookout</h3>
+        <ul class="catalog">
+          <li>
+            <p class="work-type">Desktop app · Windows, macOS, Linux</p>
+            <h4>Tsumiba</h4>
             <p>
-              Send-confirmation software for Outlook that helps review recipients,
-              attachments, subject, and body before a message leaves the draft.
+              A memo and file shelf that slides in from the top edge of the screen,
+              with a browser extension that sends pages, selections, and links to it.
             </p>
-          </div>
-          <nav class="project-links" aria-label="Mail Lookout links">
-            <a href="https://marketplace.microsoft.com/en-us/product/office/WA200011471">
-              Microsoft Marketplace
-            </a>
-            <a href="https://avishaikofun.com/manifest.xml">Manifest</a>
-            <a href="https://avishaikofun.com/support.html">Support</a>
-            <a href="https://avishaikofun.com/privacy.html">Privacy</a>
-            <a href="https://avishaikofun.com/terms.html">Terms</a>
-            <a href="https://github.com/hjosugi/mail-lookout">GitHub</a>
-          </nav>
-        </article>
+            <nav class="project-links" aria-label="Tsumiba links">
+              <a href="https://hjosugi.github.io/tsumiba/">Website</a>
+              <a href="https://github.com/hjosugi/tsumiba/releases/latest">Download</a>
+              <a href="https://github.com/hjosugi/tsumiba">GitHub</a>
+            </nav>
+          </li>
+          <li>
+            <p class="work-type">Desktop app · Windows, macOS, Linux</p>
+            <h4>Irodori Table</h4>
+            <p>
+              A database workbench for querying, browsing, editing, and drawing ER
+              diagrams, with connector extensions for many engines.
+            </p>
+            <nav class="project-links" aria-label="Irodori Table links">
+              <a href="https://irodori-table.github.io/irodori-table/">Website</a>
+              <a href="https://github.com/irodori-table/irodori-table">GitHub</a>
+            </nav>
+          </li>
+          <li>
+            <p class="work-type">Text editor and CLI</p>
+            <h4>Ayame Editor</h4>
+            <p>
+              A fast cross-platform text editor for huge files and Japanese
+              encodings.
+            </p>
+            <nav class="project-links" aria-label="Ayame Editor links">
+              <a href="https://ayame-editor.github.io/ayame-editor/">Website</a>
+              <a href="https://github.com/ayame-editor/ayame-editor">GitHub</a>
+            </nav>
+          </li>
+          <li>
+            <p class="work-type">Linux · Wayland</p>
+            <h4>Wayland Feather Shot</h4>
+            <p>
+              Local screenshots, annotation, scrolling capture, and GIF recording
+              for Wayland desktops.
+            </p>
+            <nav class="project-links" aria-label="Wayland Feather Shot links">
+              <a href="https://github.com/hjosugi/wayland-feather-shot/releases/latest">Download</a>
+              <a href="https://github.com/hjosugi/wayland-feather-shot">GitHub</a>
+            </nav>
+          </li>
+          <li>
+            <p class="work-type">Windows</p>
+            <h4>Iroha Zip</h4>
+            <p>
+              A safety-first archive tool that fails closed and isolates extraction
+              in an AppContainer.
+            </p>
+            <nav class="project-links" aria-label="Iroha Zip links">
+              <a href="https://hjosugi.github.io/iroha-zip/">Website</a>
+              <a href="https://github.com/hjosugi/iroha-zip">GitHub</a>
+            </nav>
+          </li>
+          <li>
+            <p class="work-type">Command-line tool</p>
+            <h4>sql-dialect-fmt</h4>
+            <p>
+              An opinionated formatter and language server for Snowflake and
+              Databricks SQL. Lossless and idempotent, safe to run in CI.
+            </p>
+            <nav class="project-links" aria-label="sql-dialect-fmt links">
+              <a href="https://hjosugi.github.io/sql-dialect-fmt/">Website</a>
+              <a href="https://crates.io/crates/sql-dialect-fmt">crates.io</a>
+              <a href="https://github.com/hjosugi/sql-dialect-fmt">GitHub</a>
+            </nav>
+          </li>
+          <li>
+            <p class="work-type">Programming language</p>
+            <h4>Kofun</h4>
+            <p>
+              An experimental language with a bootstrap written in Kofun and direct
+              ELF64 backends for x86-64 and AArch64.
+            </p>
+            <nav class="project-links" aria-label="Kofun links">
+              <a href="https://kofun-lang.github.io/kofun/">Website</a>
+              <a href="https://github.com/kofun-lang/kofun">GitHub</a>
+            </nav>
+          </li>
+          <li>
+            <p class="work-type">Pixel-art assets</p>
+            <h4>Kofun Friends</h4>
+            <p>
+              Characters, emoji, GIFs, cursors, and sprites. The artwork on this
+              page comes from here.
+            </p>
+            <nav class="project-links" aria-label="Kofun Friends links">
+              <a href="https://github.com/hjosugi/kofun-friends">GitHub</a>
+            </nav>
+          </li>
+        </ul>
+
+        <p class="more">
+          More on <a href="https://github.com/hjosugi">GitHub</a>.
+        </p>
       </section>
     </main>
 
